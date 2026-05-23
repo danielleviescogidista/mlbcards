@@ -1,0 +1,26 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
+export default function NotFound() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Redirigir a la página de inicio después de 3 segundos
+    const timer = setTimeout(() => {
+      navigate('/mlbcards/');
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [navigate]);
+
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold mb-4">404</h1>
+        <p className="text-muted-foreground mb-4">Página no encontrada</p>
+        <p className="text-sm text-muted-foreground">Redirigiendo al inicio...</p>
+      </div>
+    </div>
+  );
+}
